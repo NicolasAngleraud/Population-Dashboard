@@ -2,7 +2,7 @@
 
 ## 📊 Project Overview
 
-The Japan Population Dashboard built with Streamlit provides insights into yearly population dynamics across different prefectures of Japan and nation wise between 1975 and 2023 as well as predictions for 2024.
+The [Japan Population Dashboard](https://japan-yearly-population-dashboard.streamlit.app/) built with Streamlit provides insights into yearly population dynamics across different prefectures of Japan and nation wise between 1975 and 2023 as well as predictions for 2024.
 
 
 ## 📈 Data Sources
