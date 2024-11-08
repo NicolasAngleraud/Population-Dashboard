@@ -8,11 +8,8 @@ import json
 
 st.set_page_config(
     page_title="Japan Population Dashboard",
-    #page_icon="日",
     layout="wide",
     initial_sidebar_state="expanded")
-
-alt.themes.enable("dark")
 
 
 
@@ -33,6 +30,7 @@ st.markdown("""
 }
 
 [data-testid="stMetric"] {
+
     text-align: center;
     padding: 15px 0;
 }
@@ -86,10 +84,9 @@ with st.sidebar:
     population_df_year = population_df[population_df.year == selected_year]
     population_df_year_sorted = population_df_year.sort_values(by="population", ascending=False)
 
-    color_theme_list = ['blues', 'cividis', 'greens', 'inferno', 'magma', 'plasma', 'reds', 'rainbow', 'turbo', 'viridis']
+    color_theme_list = ['blues', 'blues_r', 'greens', 'reds', 'portland', 'speed', 'electric']
     selected_color_theme = st.selectbox('Color theme', color_theme_list)
     
-    #selected_prediction_year = st.selectbox('Prediction year', ['-', 2024])
 
 
 
@@ -110,7 +107,6 @@ def make_line_chart(input_df):
         title="Japan Population Growth",
         xaxis_title="Year",
         yaxis_title="Total Population",
-        template='plotly_dark',
         xaxis=dict(
             rangeslider=dict(visible=True),
             type="category",
@@ -141,9 +137,14 @@ def make_choropleth(input_df, input_color_theme):
 
     choropleth.update_geos(fitbounds="locations", visible=False)
     choropleth.update_layout(
-        template='plotly_dark',
-        plot_bgcolor='rgba(0, 0, 0, 0)',
-        paper_bgcolor='rgba(0, 0, 0, 0)',
+        geo=dict(
+        bgcolor='rgba(128, 128, 128, 1)'
+        ),
+        coloraxis_colorbar=dict(
+        title="Population"
+        ),
+        plot_bgcolor='rgba(175, 175, 175, 0)',
+        paper_bgcolor='rgba(175, 175, 175, 0)',
         margin=dict(l=0, r=0, t=0, b=0),
         height=350
     )
@@ -200,8 +201,7 @@ with col[0]:
         lower = round(float(predictive_model_results.loc['CI Lower Bound', 1])/1000000, 2)
         upper = round(float(predictive_model_results.loc['CI Upper Bound', 1])/1000000, 2)
 
-        #st.markdown(f"<small><b>95% CI:</b></small>", unsafe_allow_html=True)
-        st.markdown(f"<small><b>[<span style='color: red'>{lower}M</span>, <span style='color: green'>{upper}M</span>]</b></small>" + f"<small><b> (95%)*</b></small>", unsafe_allow_html=True)
+        st.markdown(f"<small><b>[<span style='color: red'>{lower}M</span>, <span style='color: green'>{upper}M</span>]</b></small>" + f"<small><b> (95% CI)*</b></small>", unsafe_allow_html=True)
     
     st.markdown('#### Extreme Prefecture Dynamics')
 
@@ -242,9 +242,6 @@ with col[1]:
     choropleth = make_choropleth(population_df_year, selected_color_theme)
     st.plotly_chart(choropleth, use_container_width=True)
     
-    
-    
-    
 
 with col[2]:
     st.markdown('#### Ranked Prefectures')
@@ -270,5 +267,5 @@ with col[2]:
             - Population data: [e-Stat Portal Site of Official Statistics of Japan](https://dashboard.e-stat.go.jp/en/timeSeries)
             - Japan GIS data: [Simplemaps](https://simplemaps.com/gis/country/jp#admin1); license: Creative Commons Attribution 4.0
             - :orange[**Extreme Prefecture Dynamics**]: first and last prefecture in population growth rank
-            - :orange[**(95%)***]: 95% confidence interval for the predicted population of Japan in 2024
+            - :orange[**(95% CI)***]: 95% confidence interval for the predicted population of Japan in 2024
                 ''')
