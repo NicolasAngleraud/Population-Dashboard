@@ -138,13 +138,13 @@ def make_choropleth(input_df, input_color_theme):
     choropleth.update_geos(fitbounds="locations", visible=False)
     choropleth.update_layout(
         geo=dict(
-        bgcolor='rgba(128, 128, 128, 1)'
+        bgcolor='rgba(220, 220, 220, 0)'
         ),
         coloraxis_colorbar=dict(
         title="Population"
         ),
-        plot_bgcolor='rgba(175, 175, 175, 0)',
-        paper_bgcolor='rgba(175, 175, 175, 0)',
+        plot_bgcolor='rgba(220, 220, 220, 0)',
+        paper_bgcolor='rgba(220, 220, 220, 0)',
         margin=dict(l=0, r=0, t=0, b=0),
         height=350
     )
