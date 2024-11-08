@@ -2,8 +2,11 @@
 
 ## 📊 Project Overview
 
-The [Japan Population Dashboard](https://japan-yearly-population-dashboard.streamlit.app/) built with Streamlit provides insights into yearly population dynamics across different prefectures of Japan and nation wise between 1975 and 2023 as well as predictions for 2024.
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://japan-yearly-population-dashboard.streamlit.app/)
 
+The Japan Population Dashboard app built with Streamlit provides insights into yearly population dynamics across different prefectures of Japan and nation wise between 1975 and 2023 as well as predictions for 2024.
+
+---
 
 ## 📈 Data Sources
 
@@ -22,8 +25,6 @@ The raw data from various sources has been cleaned and processed to enable inter
 - **Calculation**: Population difference between the current year and the previous year to get population dynamics.
 - **Prediction**: Population figures for 2024 were predicted using ARIMA models at prefecture level.
 
-The code used for the app was mostly developped in this Colab [notebook](https://colab.research.google.com/drive/1-jcfI9QZlUJ0wEnR7H_hWE-cjK9gc5Qb?usp=sharing) and drawing inspiration from this [github repository](https://github.com/dataprofessor/population-dashboard?tab=readme-ov-file).
-
 ---
 
 ## 🗂️ Project Structure
@@ -31,3 +32,9 @@ The code used for the app was mostly developped in this Colab [notebook](https:/
 - **`app.py`**: Main Streamlit app script that loads and visualizes the data.
 - **`data/`**: Folder for storing data files used by the dashboard.
 - **`requirements.txt`**: File listing necessary Python packages/libraries.
+
+---
+
+Code notebook for the project: [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1-jcfI9QZlUJ0wEnR7H_hWE-cjK9gc5Qb?usp=sharing)
+
+Inspiration of the project: [![Open in GitHub](https://img.shields.io/badge/Open%20in-GitHub-24292F?style=flat&logo=github)](https://github.com/dataprofessor/population-dashboard?tab=readme-ov-file)
